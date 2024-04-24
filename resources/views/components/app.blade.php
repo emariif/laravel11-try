@@ -42,6 +42,8 @@
             </div>
         </main>
     </div>
+
+    @stack('other-scripts')
 </body>
 
 </html>

@@ -16,3 +16,4 @@ Route::view('/reports', 'reports');
 
 Route::get('/users', [Controllers\UserController::class, 'index']);
 Route::get('/users/create', [Controllers\UserController::class, 'create']);
+Route::post('/users', [Controllers\UserController::class, 'store']);

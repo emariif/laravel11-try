@@ -18,4 +18,16 @@ class UserController extends Controller
     public function create() {
         return view('pages.users.create');
     }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'name'  => ['required', 'min:3', 'max:255'],
+            'email' => ['required', 'email'],
+            'password'  => ['required', 'min:8']
+        ]);
+
+        User::create($validated);
+
+        return redirect('/users');
+    }
 }
