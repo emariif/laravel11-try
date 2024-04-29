@@ -49,7 +49,7 @@
             <x-navbar.dropdown-item href="/projects">Projects</x-navbar.dropdown-item>
             <x-navbar.dropdown-item href="/calender">Calendar</x-navbar.dropdown-item>
             <x-navbar.dropdown-item href="/reports">Reports</x-navbar.dropdown-item>
-            <x-navbar.dropdown-item href="/users">Users</x-navbar.dropdown-item>
+            <x-navbar.dropdown-item href="{{ route('users.index') }}">Users</x-navbar.dropdown-item>
         </div>
     </div>
 </nav>

@@ -9,7 +9,7 @@
                 email and role.</x-slot>
         </x-section-title>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <x-button as="a" href="/users/create">
+            <x-button as="a" href="{{ route('users.create') }}">
                 Add user
             </x-button>
         </div>
@@ -34,8 +34,8 @@
                         <x-table.td>{{ $user->created_at->format('d F Y') }}</x-table.td>
                         <x-table.td>
                             <div class="flex gap-2">
-                                <a href="/users/{{ $user->id }}" class="text-indigo-600 hover:text-indigo-900">View</a>
-                                <a href="/users/{{ $user->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                <a href="{{ route('users.show', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                <a href="{{ route('users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </div>
                         </x-table.td>
                     </tr>
