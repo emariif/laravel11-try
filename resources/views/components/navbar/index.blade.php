@@ -13,8 +13,19 @@
                         <x-navbar.link href="/team">Team</x-navbar.link>
                         <x-navbar.link href="/projects">Projects</x-navbar.link>
                         <x-navbar.link href="/calender">Calendar</x-navbar.link>
-                        <x-navbar.link href="/reports">Reports</x-navbar.link>
-                        <x-navbar.link href="/users">Users</x-navbar.link>
+                        @auth
+                            <x-navbar.link href="/reports">Reports</x-navbar.link>
+                            <x-navbar.link href="/users">Users</x-navbar.link>
+                        @endauth
+                        @auth
+                            <x-navbar.link href="#">{{ auth()->user()->email }}</x-navbar.link>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <x-button>Logout</x-button>
+                            </form>
+                        @else
+                            <x-navbar.link href="/login">Login</x-navbar.link>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -50,6 +61,7 @@
             <x-navbar.dropdown-item href="/calender">Calendar</x-navbar.dropdown-item>
             <x-navbar.dropdown-item href="/reports">Reports</x-navbar.dropdown-item>
             <x-navbar.dropdown-item href="{{ route('users.index') }}">Users</x-navbar.dropdown-item>
+            <x-navbar.dropdown-item href="/login">Login</x-navbar.dropdown-item>
         </div>
     </div>
 </nav>
