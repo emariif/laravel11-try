@@ -1,19 +1,20 @@
-<x-app title="Create">
+<x-app title="{{ $page_meta['title'] }}">
     <x-slot name="heading">
-        Create new user
+        {{ $page_meta['title'] }}
     </x-slot>
-    <form action="/users" method="post" class="space-y-6">
+    <form action="{{ $page_meta['url'] }}" method="post" class="space-y-6">
+        @method($page_meta['method'])
         @csrf
         <div>
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="px-4 py-2 rounded-lg border block mt-1">
+            <input type="text" name="name" id="name" class="px-4 py-2 rounded-lg border block mt-1" value="{{ old('name', $user->name) }}">
             @error('name')
                 <p class="text-red-500 text-sm mt-1" id="name-error">{{ $message }}</p>
             @enderror
         </div>
         <div>
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="px-4 py-2 rounded-lg border block mt-1">
+            <input type="email" name="email" id="email" class="px-4 py-2 rounded-lg border block mt-1" value="{{ old('email', $user->email) }}">
             @error('email')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
@@ -26,7 +27,7 @@
             @enderror
         </div>
 
-        <x-button>Save</x-button>
+        <x-button>{{ $page_meta['submit_text'] }}</x-button>
     </form>
 
     @push('other-scripts')

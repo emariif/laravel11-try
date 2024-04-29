@@ -22,6 +22,7 @@
                     <x-table.th>Name</x-table.th>
                     <x-table.th>Email</x-table.th>
                     <x-table.th>Created At</x-table.th>
+                    <x-table.th>Action</x-table.th>
                 </tr>
             </x-table.thead>
             <x-table.tbody>
@@ -31,6 +32,12 @@
                         <x-table.td>{{ $user->name }}</x-table.td>
                         <x-table.td>{{ $user->email }}</x-table.td>
                         <x-table.td>{{ $user->created_at->format('d F Y') }}</x-table.td>
+                        <x-table.td>
+                            <div class="flex gap-2">
+                                <a href="/users/{{ $user->id }}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                <a href="/users/{{ $user->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            </div>
+                        </x-table.td>
                     </tr>
                 @endforeach
             </x-table.tbody>
