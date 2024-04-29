@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,14 +28,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
-        $validated = $request->validate([
-            'name'  => ['required', 'min:3', 'max:255'],
-            'email' => ['required', 'email'],
-            'password'  => ['required', 'min:8']
-        ]);
-
-        User::create($validated);
+    public function store(UserRequest $request) {
+        User::create($request->validated());
 
         return redirect('/users');
     }
@@ -57,14 +52,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user) {
-        $validated = $request->validate([
-            'name'  => ['required', 'min:3', 'max:255'],
-            'email' => ['required', 'email'],
-            'password'  => ['required', 'min:8']
-        ]);
-
-        $user->update($validated);
+    public function update(UserRequest $request, User $user) {
+        $user->update($request->validated());
 
         return redirect('/users');
     }
